@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+const mongoose = require('mongoose');
+mongoose.connect("mongodb+srv://fcmongo:freecodecamp@cluster0.ce5iw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 
 let Person;
 
