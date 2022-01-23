@@ -97,8 +97,31 @@ const findPersonById = (personId, done) => {
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
 
-  done(null /*, data*/);
+  Person.findById(personId,function(err,person){
+    if(err){
+      return console.log(err);
+    }else{
+      //console.log(person)
+      person.favoriteFoods.push(foodToAdd);
+      //console.log(person);
+      person.save((err,updatedPerson) => {
+        if(err){
+          return console.log(err);
+        }else{
+          done(null,updatedPerson);
+        }
+      });
+    }
+  });
+
+ // done(null /*, data*/);
 };
+
+//const findEditThenSave = (personId, done) => {
+  //const foodToAdd = "hamburger";
+
+  //done(null /*, data*/);
+//};
 
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
